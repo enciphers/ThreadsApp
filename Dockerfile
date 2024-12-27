@@ -1,5 +1,5 @@
 # Use the official Node.js 16 image as a parent image
-FROM node:16
+FROM node:16-apline
 
 # Set the working directory in the container
 WORKDIR /app
@@ -8,4 +8,5 @@ WORKDIR /app
 COPY . .
 
 # Install any needed packages specified in package*.json
-RUN npm run install:all_deps
+RUN cd backend && npm i --force && \
+cd ../client/ && npm i --force
